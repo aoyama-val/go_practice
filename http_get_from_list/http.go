@@ -7,6 +7,11 @@ import (
 	"net/http"
 )
 
+// 1ホストあたりの最大コネクション数を設定
+func setMaxConnection(n int) {
+	http.DefaultTransport.(*http.Transport).MaxIdleConnsPerHost = n
+}
+
 func get(url string) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
