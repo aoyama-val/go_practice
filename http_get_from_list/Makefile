@@ -1,4 +1,8 @@
 SRC = $(wildcard *.go)
+BIN = bin/main
 
-main: $(SRC)
-	go build -o main $(SRC)
+$(BIN): $(SRC)
+	go build -o $@ $(SRC)
+
+clean:
+	rm -rf $(BIN)
