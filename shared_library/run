@@ -1,0 +1,13 @@
+#!/bin/sh
+
+trap 'kill $pid; exit' INT
+
+LD_LIBRARY_PATH=. ./main "$@" &
+pid=$!
+
+#while true; do
+#    top -b -n1 -p $pid | tail -n 1
+#    sleep 1
+#done
+
+wait $pid
